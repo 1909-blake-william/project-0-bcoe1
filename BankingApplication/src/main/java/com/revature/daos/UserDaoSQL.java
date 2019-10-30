@@ -179,19 +179,22 @@ public class UserDaoSQL implements UserDao {
 		try (Connection c = ConnectionUtil.getConnection()) {
 
 			//String sql = "DELETE FROM accounts " + " WHERE account_id = ?";
-			String sqlFindBalance = "SELECT balance FROM accounts WHERE account_id = ?";
+			String sqlFindBalance = "SELECT balance, account_type FROM accounts WHERE account_id = ?";
 			PreparedStatement psBalance = c.prepareStatement(sqlFindBalance);
 			psBalance.setInt(1, id);
 			ResultSet rs = psBalance.executeQuery();
 			rs.next();
 			double balance = rs.getDouble("balance");
+			String type = rs.getString("account_type").concat(".Closed");
 			
 			
 			
-			String sql = "UPDATE accounts SET status = 'Inactive', balance = 0 WHERE account_id = ?";
+			String sql = "UPDATE accounts SET status = 'Inactive', balance = 0, account_type = ?"+
+			" WHERE account_id = ?";
 
 			PreparedStatement ps = c.prepareStatement(sql);
-			ps.setInt(1, id);
+			ps.setInt(2, id);
+			ps.setString(1, type);
 		
 			ps.executeUpdate();
 			authUtil.getCurrentUser().setAccount(AccountDaoSQL.getAccounts(authUtil.getCurrentUser().getId()));

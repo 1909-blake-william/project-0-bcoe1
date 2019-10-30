@@ -18,14 +18,3 @@ public class BankDriver {
 	}
 
 }
-
-
-
-// make an admin account in sql, and then add ways for it to view more info
-
-
-
-
-//admin - see all users, see all accounts, see all history,
-//or accounts of a user, or history of a user, or history of an account
-

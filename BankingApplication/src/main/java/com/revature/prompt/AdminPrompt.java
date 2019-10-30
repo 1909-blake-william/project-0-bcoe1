@@ -28,7 +28,7 @@ public class AdminPrompt implements Prompt {
 			if (transaction < 0) {
 
 				if (i == 0) {
-					System.out.print("$" + transaction);
+					System.out.print("$" + transaction* -1);
 				} else if (i % 5 == 4) {
 					System.out.println(", -$" + transaction * -1);
 				} else if (i % 5 == 0) {

@@ -77,13 +77,14 @@ public class PickAccountPrompt implements Prompt {
 			for (Double transaction : transactionHistory) {
 
 				if (transaction < 0) {
-					
-					if (i % 5 == 4) {
-						System.out.println(", -$" + transaction*-1);
+					if (i == 0) {
+						System.out.print("$" + transaction* -1);
+					} else if (i % 5 == 4) {
+						System.out.println(", -$" + transaction * -1);
 					} else if (i % 5 == 0) {
-						System.out.print("-$" + transaction*-1);
+						System.out.print("-$" + transaction * -1);
 					} else {
-						System.out.print(", -$" + transaction*-1);
+						System.out.print(", -$" + transaction * -1);
 
 					}
 					i++;

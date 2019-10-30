@@ -68,7 +68,7 @@ public class MainMenuPrompt implements Prompt {
 			accountNum -= 1;
 			scan.nextLine();
 
-			System.out.println("Are you sure that you want to delete account " + (accountNum + 1) + "?");
+			System.out.println("Are you sure that you want to close account " + (accountNum + 1) + "?");
 			String check = scan.nextLine().toLowerCase();
 
 			if ("yes".equals(check) || "y".equals(check)) {
